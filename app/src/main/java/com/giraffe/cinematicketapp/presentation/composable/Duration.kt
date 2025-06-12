@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -15,22 +16,24 @@ import androidx.compose.ui.unit.sp
 import com.giraffe.cinematicketapp.R
 import com.giraffe.cinematicketapp.presentation.ui.theme.CinemaTicketAppTheme
 import com.giraffe.cinematicketapp.presentation.ui.theme.black
-import com.giraffe.cinematicketapp.presentation.ui.theme.gray
+import com.giraffe.cinematicketapp.presentation.ui.theme.white
 
 @Composable
 fun Duration(
     modifier: Modifier = Modifier,
     durationInMinutes: Int = 143,
-    fontColor: Color = black
+    fontColor: Color = black,
+    iconColor: Color = white.copy(.7f)
 ) {
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(5.dp)
+        horizontalArrangement = Arrangement.spacedBy(5.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
             painter = painterResource(R.drawable.ic_clock),
             contentDescription = "clock",
-            colorFilter = ColorFilter.tint(gray)
+            colorFilter = ColorFilter.tint(iconColor)
         )
         Text(text = "${durationInMinutes / 60}h", color = fontColor, fontSize = 14.sp)
         Text(text = "${durationInMinutes % 60}m", color = fontColor, fontSize = 14.sp)

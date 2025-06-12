@@ -42,8 +42,8 @@ fun DateCard(
                     color = if (isSelected) lightBrown else gray.copy(alpha = .5f),
                     shape = RoundedCornerShape(16.dp)
                 )
-                .padding(vertical = 8.dp, horizontal = 12.dp),
-            verticalArrangement = Arrangement.Center,
+                .padding(vertical = 8.dp, horizontal = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(

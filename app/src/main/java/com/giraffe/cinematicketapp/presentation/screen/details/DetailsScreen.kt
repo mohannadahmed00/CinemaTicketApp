@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,12 +36,11 @@ import com.giraffe.cinematicketapp.R
 import com.giraffe.cinematicketapp.presentation.composable.CloseButton
 import com.giraffe.cinematicketapp.presentation.composable.CreditButton
 import com.giraffe.cinematicketapp.presentation.composable.Duration
-import com.giraffe.cinematicketapp.presentation.composable.OrangeButton
 import com.giraffe.cinematicketapp.presentation.composable.TabIcon
-import com.giraffe.cinematicketapp.presentation.model.MovieUIModel
+import com.giraffe.cinematicketapp.presentation.composable.TagItem
+import com.giraffe.cinematicketapp.presentation.model.MovieUiModel
 import com.giraffe.cinematicketapp.presentation.screen.home.HomeViewModel
 import com.giraffe.cinematicketapp.presentation.ui.theme.CinemaTicketAppTheme
-import com.giraffe.cinematicketapp.presentation.ui.theme.black
 import com.giraffe.cinematicketapp.presentation.ui.theme.gray
 import com.giraffe.cinematicketapp.presentation.ui.theme.orange
 import com.giraffe.cinematicketapp.presentation.ui.theme.white
@@ -54,7 +54,7 @@ fun DetailsScreen(viewModel: HomeViewModel = koinViewModel()) {
 }
 
 @Composable
-fun DetailsContent(movie: MovieUIModel = MovieUIModel()) {
+fun DetailsContent(movie: MovieUiModel = MovieUiModel()) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -79,14 +79,15 @@ fun DetailsContent(movie: MovieUIModel = MovieUIModel()) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                CloseButton(size = 14.dp)
+                CloseButton(size = 18.dp)
                 Box(
                     modifier = Modifier.background(
-                        color = white.copy(.2f),
-                        shape = RoundedCornerShape(16.dp)
+                        color = white.copy(.3f),
+                        shape = RoundedCornerShape(30.dp)
                     )
                 ) {
                     Duration(
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                         durationInMinutes = movie.durationInMinutes,
                         fontColor = white
                     )
@@ -119,25 +120,25 @@ fun DetailsContent(movie: MovieUIModel = MovieUIModel()) {
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Row {
-                        Text(text = "${movie.rateOfIMDb}")
+                        Text(text = "${movie.rateOfIMDb}", fontWeight = FontWeight.Bold)
                         Text(text = "/10", color = gray)
                     }
                     Text(text = "IMDb", color = gray, fontSize = 14.sp)
                 }
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = "${movie.rateOfRottenTomatoes}%")
+                    Text(text = "${movie.rateOfRottenTomatoes}%", fontWeight = FontWeight.Bold)
                     Text(text = "Rotten Tomatoes", color = gray, fontSize = 14.sp)
                 }
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Row {
-                        Text(text = "${movie.rateOfIGN}")
+                        Text(text = "${movie.rateOfIGN}", fontWeight = FontWeight.Bold)
                         Text(text = "/10", color = gray)
                     }
                     Text(text = "IGN", color = gray, fontSize = 14.sp)
                 }
             }
             Text(
-                modifier = Modifier.padding(horizontal = 16.dp),
+                modifier = Modifier.padding(horizontal = 32.dp),
                 text = movie.title,
                 style = MaterialTheme.typography.headlineSmall,
                 textAlign = TextAlign.Center
@@ -148,11 +149,7 @@ fun DetailsContent(movie: MovieUIModel = MovieUIModel()) {
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 items(movie.tags) { tag ->
-                    OrangeButton(
-                        text = tag,
-                        fontSize = 12.sp,
-                        fontColor = black
-                    )
+                    TagItem(tag = tag)
                 }
             }
             LazyRow(
@@ -163,7 +160,7 @@ fun DetailsContent(movie: MovieUIModel = MovieUIModel()) {
                 items(movie.actorsImages) { tag ->
                     Image(
                         modifier = Modifier
-                            .size(50.dp)
+                            .size(70.dp)
                             .clip(CircleShape),
                         painter = painterResource(tag),
                         contentDescription = "actor",
@@ -172,7 +169,7 @@ fun DetailsContent(movie: MovieUIModel = MovieUIModel()) {
                 }
             }
             Text(
-                modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp),
+                modifier = Modifier.padding(horizontal = 32.dp, vertical = 16.dp),
                 text = movie.description,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,

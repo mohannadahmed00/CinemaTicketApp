@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.giraffe.cinematicketapp.presentation.ui.theme.CinemaTicketAppTheme
@@ -24,7 +25,8 @@ import com.giraffe.cinematicketapp.presentation.ui.theme.white
 fun TimeCard(
     modifier: Modifier = Modifier,
     time: String = "12:30",
-    isSelected: Boolean = false
+    isSelected: Boolean = false,
+    fontSize: TextUnit = 20.sp
 ) {
     Box(
         modifier = modifier
@@ -42,7 +44,7 @@ fun TimeCard(
     ) {
         Text(
             text = time, style = TextStyle(
-                fontSize = 20.sp,
+                fontSize = fontSize,
                 color = if (isSelected) white else black,
                 fontWeight = FontWeight.W500
             )

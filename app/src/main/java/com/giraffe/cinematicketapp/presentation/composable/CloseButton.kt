@@ -25,7 +25,7 @@ fun CloseButton(
     size: Dp = 45.dp,
 ) {
     Box(
-        modifier = modifier.background(color = white.copy(alpha = .2f), shape = CircleShape),
+        modifier = modifier.background(color = white.copy(alpha = .3f), shape = CircleShape),
         contentAlignment = Alignment.Center
     ) {
 

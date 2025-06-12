@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.giraffe.cinematicketapp.R
 import com.giraffe.cinematicketapp.presentation.ui.theme.CinemaTicketAppTheme
 import com.giraffe.cinematicketapp.presentation.ui.theme.orange
@@ -22,9 +23,12 @@ import com.giraffe.cinematicketapp.presentation.ui.theme.white
 
 @Composable
 fun CreditButton(
-    modifier: Modifier = Modifier, text: String = "Booking", iconSize: Dp = 16.dp
+    modifier: Modifier = Modifier,
+    text: String = "Booking",
+    iconSize: Dp = 28.dp,
 ) {
     Button(
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors().copy(containerColor = orange),
         onClick = {}
     ) {
@@ -38,7 +42,7 @@ fun CreditButton(
                 contentDescription = "credit card",
                 colorFilter = ColorFilter.tint(white)
             )
-            Text(text = text)
+            Text(text = text, fontSize = 18.sp)
         }
     }
 }

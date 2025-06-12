@@ -1,5 +1,6 @@
 package com.giraffe.cinematicketapp.presentation.composable
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
@@ -14,6 +15,7 @@ fun BottomNavigationBar(
     modifier: Modifier = Modifier,
     selectedTab: Tab,
     iconSize: Dp = 48.dp,
+    selectTab: (Tab) -> Unit,
 ) {
     Row(
         modifier = modifier,
@@ -22,6 +24,12 @@ fun BottomNavigationBar(
     ) {
         Tab.entries.forEach {
             TabIcon(
+                modifier = Modifier.clickable(
+                    interactionSource = null,
+                    indication = null
+                ) {
+                    selectTab(it)
+                },
                 icon = it.icon,
                 notificationCount = it.notificationCount,
                 isSelected = it == selectedTab,
