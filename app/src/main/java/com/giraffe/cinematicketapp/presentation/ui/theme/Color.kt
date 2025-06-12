@@ -1,4 +1,4 @@
-package com.giraffe.cinematicketapp.ui.theme
+package com.giraffe.cinematicketapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
