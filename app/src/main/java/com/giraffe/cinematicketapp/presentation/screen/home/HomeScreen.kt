@@ -1,50 +1,40 @@
 package com.giraffe.cinematicketapp.presentation.screen.home
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.tooling.preview.Preview
-import com.giraffe.cinematicketapp.presentation.ui.theme.CinemaTicketAppTheme
-import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
-import androidx.compose.ui.graphics.RenderEffect
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.giraffe.cinematicketapp.R
 import com.giraffe.cinematicketapp.presentation.composable.BottomNavigationBar
 import com.giraffe.cinematicketapp.presentation.composable.Duration
 import com.giraffe.cinematicketapp.presentation.composable.OrangeButton
-import com.giraffe.cinematicketapp.presentation.composable.TabIcon
+import com.giraffe.cinematicketapp.presentation.ui.theme.CinemaTicketAppTheme
 import com.giraffe.cinematicketapp.presentation.ui.theme.black
-import com.giraffe.cinematicketapp.presentation.ui.theme.gray
 import com.giraffe.cinematicketapp.presentation.ui.theme.orange
-import com.giraffe.cinematicketapp.presentation.ui.theme.trans
 import com.giraffe.cinematicketapp.presentation.ui.theme.white
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeScreen(
@@ -113,11 +103,11 @@ fun HomeContent(
                     style = MaterialTheme.typography.headlineSmall,
                     textAlign = TextAlign.Center
                 )
-                LazyRow (
+                LazyRow(
                     modifier = Modifier.weight(1f),
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
-                ){
-                    items(state.selectedMovie.tags) { tag->
+                ) {
+                    items(state.selectedMovie.tags) { tag ->
                         OrangeButton(
                             text = tag,
                             fontSize = 12.sp,
@@ -128,7 +118,9 @@ fun HomeContent(
 
             }
             BottomNavigationBar(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp),
                 selectedTab = state.selectedTab,
                 iconSize = 35.dp
             )
